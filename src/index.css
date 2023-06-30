@@ -1,21 +1,25 @@
-.header-container,
-.app-container {
-  display: flex;
-}
-
 .header-container {
+  display: flex;
   justify-content: space-between;
+  border: 1px solid gray;
 }
 
 .logo {
   width: 150px;
+
 }
 
-.nav-container ul {
+.nav-items {
+  padding: 0 20px;
+}
+
+.nav-items>ul {
   display: flex;
+  list-style-type: none;
+  font-size: 24px;
 }
 
-.nav-container ul li {
-  list-style-type: none;
+.nav-items>ul>li {
   padding: 10px;
+  margin: 10px;
 }

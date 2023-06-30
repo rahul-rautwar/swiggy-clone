@@ -4,12 +4,14 @@ import Logo from "./Logo";
 const Header = () => {
   return (
     <div className="header-container">
-      <Logo />
-      <div className="nav-container">
+      <div className="logo-container">
+        <Logo />
+      </div>
+      <div className="nav-items">
         <ul>
           <li>Home</li>
           <li>About Us</li>
-          <li>My Order</li>
+          <li>Contact Us</li>
           <li>Cart</li>
         </ul>
       </div>
