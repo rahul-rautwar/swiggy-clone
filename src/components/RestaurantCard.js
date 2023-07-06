@@ -1,4 +1,5 @@
 import React from "react";
+import { CDN_URL } from "../utils/constant";
 
 //destructuring on the fly or props can be used
 const RestaurantCard = (props) => {
@@ -8,10 +9,7 @@ const RestaurantCard = (props) => {
       <img
         className="res-logo"
         alt="restaurant logo"
-        src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          resData?.data?.cloudinaryImageId
-        }
+        src={CDN_URL + resData?.data?.cloudinaryImageId}
       />
       <h3>{resData?.data?.name}</h3>
       <h4>{resData?.data?.cuisines.join(", ")}</h4>
