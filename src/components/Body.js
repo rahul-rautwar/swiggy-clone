@@ -432,7 +432,9 @@ const Body = () => {
       <div className="search">Search</div>
       <div className="res-container">
         {resData.map((res) => {
-          return <RestaurantCard resData={res}></RestaurantCard>;
+          return (
+            <RestaurantCard key={res.data.id} resData={res}></RestaurantCard>
+          );
         })}
       </div>
     </div>
