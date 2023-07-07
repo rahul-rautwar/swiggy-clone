@@ -4,65 +4,7 @@ import { resData } from "../utils/mockData";
 // import  from "react";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([
-    {
-      data: {
-        id: "29063",
-        name: "Misu",
-        cloudinaryImageId: "lx0tpfgsbqygafwh30wh",
-        cuisines: [
-          "Asian",
-          "Chinese",
-          "Vietnamese",
-          "Malaysian",
-          "Sushi",
-          "Singaporean",
-          "Desserts",
-        ],
-        costForTwo: 130000,
-        deliveryTime: 19,
-        avgRating: "3.4",
-      },
-    },
-    {
-      data: {
-        id: "29064",
-        name: "Misu 2",
-        cloudinaryImageId: "lx0tpfgsbqygafwh30wh",
-        cuisines: [
-          "Asian",
-          "Chinese",
-          "Vietnamese",
-          "Malaysian",
-          "Sushi",
-          "Singaporean",
-          "Desserts",
-        ],
-        costForTwo: 130000,
-        deliveryTime: 19,
-        avgRating: "4.4",
-      },
-    },
-    {
-      data: {
-        id: "29066",
-        name: "KFC 2",
-        cloudinaryImageId: "lx0tpfgsbqygafwh30wh",
-        cuisines: [
-          "Asian",
-          "Chinese",
-          "Vietnamese",
-          "Malaysian",
-          "Sushi",
-          "Singaporean",
-          "Desserts",
-        ],
-        costForTwo: 130000,
-        deliveryTime: 19,
-        avgRating: "4.4",
-      },
-    },
-  ]);
+  const [listOfRestaurants, setListOfRestaurants] = useState(resData);
   return (
     <div className="body">
       <div className="filter">
