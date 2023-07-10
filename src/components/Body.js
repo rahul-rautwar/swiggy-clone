@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { resData } from "../utils/mockData";
+import Shimmer from "./Shimmer";
 // import  from "react";
 
 const Body = () => {
@@ -19,6 +20,9 @@ const Body = () => {
     setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   };
 
+  if (!listOfRestaurants.length) {
+    return <Shimmer />;
+  }
   return (
     <div className="body">
       <div className="filter">
