@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { resData } from "../utils/mockData";
 import Shimmer from "./Shimmer";
+import { RESTAUARNTS_URL } from "../utils/constant";
 // import  from "react";
 
 const Body = () => {
@@ -13,15 +13,12 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(RESTAUARNTS_URL);
     const json = await data.json();
     setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   };
 
   //conditional rendering
-
   return !listOfRestaurants.length ? (
     <Shimmer />
   ) : (
