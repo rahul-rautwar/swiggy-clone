@@ -6,6 +6,7 @@ import { RESTAUARNTS_URL } from "../utils/constant";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestuarants, setFilteredRestuarants] = useState([]);
   const [searchText, setSearchText] = useState("");
   // [] - will be callend after render
   // anyVarName - then called after anyVarName changed
@@ -17,6 +18,7 @@ const Body = () => {
     const data = await fetch(RESTAUARNTS_URL);
     const json = await data.json();
     setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestuarants(json?.data?.cards[2]?.data?.data?.cards);
   };
 
   //conditional rendering
@@ -38,10 +40,10 @@ const Body = () => {
             type="button"
             className=""
             onClick={() => {
-              const filteredRestuarants = listOfRestaurants.filter((res) =>
+              const filteredRestuarantsList = listOfRestaurants.filter((res) =>
                 res.data.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setListOfRestaurants(filteredRestuarants);
+              setFilteredRestuarants(filteredRestuarantsList);
             }}
           >
             Search
@@ -60,7 +62,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((res) => {
+        {filteredRestuarants.map((res) => {
           return (
             <RestaurantCard key={res.data.id} resData={res}></RestaurantCard>
           );
