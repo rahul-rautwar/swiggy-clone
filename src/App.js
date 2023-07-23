@@ -1,22 +1,15 @@
 import "./App.css";
-import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./components/About";
 import { Contact } from "./components/Contact";
 import Error from "./components/Error";
+import MainContainer from "./components/MainContainer";
 
-const RouteComponent = () => {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
-};
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <RouteComponent />,
+    element: <MainContainer />,
     children: [
       {
         path: "/",
@@ -38,7 +31,6 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <div className="app">
-      <Header />
       <RouterProvider router={appRouter} />
     </div>
   );
