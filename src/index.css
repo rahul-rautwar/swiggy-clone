@@ -4,6 +4,10 @@
   border: 1px solid gray;
 }
 
+.header-container .nav-items a {
+  padding: 0 10px;
+}
+
 .logo {
   width: 150px;
 
