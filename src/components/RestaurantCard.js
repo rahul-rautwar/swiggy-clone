@@ -9,13 +9,13 @@ const RestaurantCard = (props) => {
       <img
         className="res-logo"
         alt="restaurant logo"
-        src={CDN_URL + resData?.data?.cloudinaryImageId}
+        src={CDN_URL + resData?.cloudinaryImageId}
       />
-      <h3>{resData?.data?.name}</h3>
-      <h4>{resData?.data?.cuisines.join(", ")}</h4>
-      <h4>{resData?.data?.avgRating} stars</h4>
-      <h4>₹{resData?.data?.costForTwo / 100} FOR TWO</h4>
-      <h4>{resData?.data?.deliveryTime} minutes </h4>
+      <h3>{resData?.name}</h3>
+      <h4>{resData?.cuisines.join(", ")}</h4>
+      <h4>{resData?.avgRating} stars</h4>
+      <h4>₹{resData?.costForTwo / 100} FOR TWO</h4>
+      <h4>{resData?.deliveryTime} minutes </h4>
     </div>
   );
 };

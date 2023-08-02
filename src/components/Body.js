@@ -18,12 +18,16 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAUARNTS_URL);
     const json = await data.json();
-    setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestuarants(json?.data?.cards[2]?.data?.data?.cards);
+    setListOfRestaurants(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestuarants(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   //conditional rendering
-  return !listOfRestaurants.length ? (
+  return !listOfRestaurants?.length ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -54,7 +58,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             setListOfRestaurants(
-              listOfRestaurants.filter((res) => res.data.avgRating > 4)
+              listOfRestaurants.filter((res) => res.info.avgRating > 4)
             );
             console.log(listOfRestaurants);
           }}
@@ -65,8 +69,8 @@ const Body = () => {
       <div className="res-container">
         {filteredRestuarants.map((res) => {
           return (
-            <Link key={res.data.id} to={"/restaurants/" + res.data.id}>
-              <RestaurantCard resData={res}></RestaurantCard>
+            <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
+              <RestaurantCard resData={res?.info}></RestaurantCard>
             </Link>
           );
         })}
