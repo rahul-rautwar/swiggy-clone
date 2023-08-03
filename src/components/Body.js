@@ -19,10 +19,10 @@ const Body = () => {
     const data = await fetch(RESTAUARNTS_URL);
     const json = await data.json();
     setListOfRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestuarants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -46,7 +46,7 @@ const Body = () => {
             className=""
             onClick={() => {
               const filteredRestuarantsList = listOfRestaurants.filter((res) =>
-                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRestuarants(filteredRestuarantsList);
             }}
@@ -57,7 +57,7 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            setListOfRestaurants(
+            setFilteredRestuarants(
               listOfRestaurants.filter((res) => res.info.avgRating > 4)
             );
             console.log(listOfRestaurants);
