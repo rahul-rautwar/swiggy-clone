@@ -3,13 +3,14 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { RESTAUARNTS_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 // import  from "react";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestuarants, setFilteredRestuarants] = useState([]);
   const [searchText, setSearchText] = useState("");
-  // [] - will be callend after render
+  // [] - will be called after render
   // anyVarName - then called after anyVarName changed
   useEffect(() => {
     fetchData();
@@ -25,6 +26,17 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (!onlineStatus) {
+    return (
+      <h1>
+        Oops... Looks like your offline!!! Please check your Internet
+        connection....
+      </h1>
+    );
+  }
 
   //conditional rendering
   return !listOfRestaurants?.length ? (
