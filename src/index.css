@@ -4,8 +4,14 @@
   border: 1px solid gray;
 }
 
-.header-container .nav-items a {
+.header-container .nav-items a,
+.online-status {
   padding: 0 10px;
+}
+
+.header-container .nav-items .online-status {
+  padding: 0;
+  margin: 0;
 }
 
 .logo {
