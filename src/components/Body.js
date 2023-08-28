@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { RESTAUARNTS_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestuarants, setFilteredRestuarants] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
   // [] - will be called after render
   // anyVarName - then called after anyVarName changed
   useEffect(() => {
@@ -84,7 +86,11 @@ const Body = () => {
         {filteredRestuarants.map((res) => {
           return (
             <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
-              <RestaurantCard resData={res?.info}></RestaurantCard>
+              {res?.info?.promoted ? (
+                <RestaurantCardPromoted resData={res?.info} />
+              ) : (
+                <RestaurantCard resData={res?.info}></RestaurantCard>
+              )}
             </Link>
           );
         })}
