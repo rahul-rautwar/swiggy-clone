@@ -28,4 +28,18 @@ const RestaurantCard = (props) => {
   );
 };
 
+// Higher order component- which take another component as an argument and returns a component
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white ml-4 p-1 rounded-lg">
+          Promoted
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
