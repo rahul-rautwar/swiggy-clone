@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 import { RESTAUARNTS_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 // import  from "react";
 
 const Body = () => {
@@ -12,6 +14,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
   // [] - will be called after render
   // anyVarName - then called after anyVarName changed
   useEffect(() => {
@@ -80,6 +84,16 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+        {/* setting the context value using state update method setUserName*/}
+        <div className="m-4 p-4 flex items-center">
+          Set User:{" "}
+          <input
+            type="text"
+            className="m-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">
