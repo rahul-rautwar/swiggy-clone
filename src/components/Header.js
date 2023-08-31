@@ -2,9 +2,15 @@ import React from "react";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
+  {
+    /* reading the context value in functional component */
+  }
+  const { loggedInUser } = useContext(UserContext);
   return (
     <div className="flex justify-between bg-blue-100 shadow-lg ">
       <div className="logo-container">
@@ -27,7 +33,8 @@ const Header = () => {
           <Link to="/cart">
             <li className="px-4">Cart </li>
           </Link>
-          <li className="px-4">{onlineStatus ? "🟢" : "🔴"}</li>
+          <li className="pl-4">{onlineStatus ? "🟢" : "🔴"}</li>
+          <li>{loggedInUser}</li>
         </ul>
       </div>
     </div>
