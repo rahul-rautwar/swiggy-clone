@@ -24,7 +24,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(RESTAUARNTS_URL);
-    const json = await data.json();
+    const json = await data?.json();
     setListOfRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -45,7 +45,7 @@ const Body = () => {
   }
 
   //conditional rendering
-  return !listOfRestaurants?.length ? (
+  return listOfRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -53,6 +53,7 @@ const Body = () => {
         <div className="search m-4 p-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid border-black"
             value={searchText}
             onChange={(event) => {
@@ -61,9 +62,10 @@ const Body = () => {
           />
           <button
             type="button"
+            name="Search"
             className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
-              const filteredRestuarantsList = listOfRestaurants.filter((res) =>
+              const filteredRestuarantsList = listOfRestaurants?.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRestuarants(filteredRestuarantsList);
@@ -77,9 +79,8 @@ const Body = () => {
             className="px-4 py-2 bg-gray-100 rounded-lg"
             onClick={() => {
               setFilteredRestuarants(
-                listOfRestaurants.filter((res) => res.info.avgRating > 4)
+                listOfRestaurants?.filter((res) => res.info.avgRating > 4)
               );
-              console.log(listOfRestaurants);
             }}
           >
             Top Rated Restaurants
@@ -97,7 +98,7 @@ const Body = () => {
         </div>
       </div>
       <div className="flex flex-wrap">
-        {filteredRestuarants.map((res) => {
+        {filteredRestuarants?.map((res) => {
           return (
             <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
               {res?.info?.promoted ? (
