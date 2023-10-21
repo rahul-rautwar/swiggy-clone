@@ -10,7 +10,6 @@ const Cart = () => {
   // always subscribe to small element of store, subscribe to small element of store
   //   const store = useSelector((store) => store);
   //   const cartItems = store.cart.items;
-  console.log("cartItems", cartItems);
 
   const dispatch = useDispatch();
   const handleClearCart = () => {

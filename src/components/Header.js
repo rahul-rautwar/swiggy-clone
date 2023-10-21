@@ -22,7 +22,7 @@ const Header = () => {
         <Logo />
       </div>
       <div className="flex items-center">
-        <ul className="flex p-4 m-4">
+        <ul className="flex p-4 m-4" name="header">
           <Link to="/">
             <li className="px-4">Home </li>
           </Link>
