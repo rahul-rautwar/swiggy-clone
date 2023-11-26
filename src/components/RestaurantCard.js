@@ -13,7 +13,10 @@ const RestaurantCard = (props) => {
     deliveryTime,
   } = resData;
   return (
-    <div className="m-4 p-4 w-[250px] bg-gray-50  rounded-lg hover:bg-gray-200">
+    <div
+      data-testid="restCard"
+      className="m-4 p-4 w-[250px] bg-gray-50  rounded-lg hover:bg-gray-200"
+    >
       <img
         className="rounded-lg"
         alt="restaurant logo"
